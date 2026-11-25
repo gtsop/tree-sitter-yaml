@@ -1,0 +1,40 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "yaml",
+      "camelcase": "Yaml",
+      "title": "Yaml",
+      "scope": "source.yaml",
+      "file-types": [
+        "yml",
+        "yaml"
+      ],
+      "injection-regex": "^yaml$",
+      "class-name": "TreeSitterYaml"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "AGPLv3",
+    "description": "Yaml grammar",
+    "authors": [
+      {
+        "name": "George Tsopanoglou",
+        "email": "gtsop+github@protonmail.com"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/gtsop/tree-sitter-yaml.git"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
