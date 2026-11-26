@@ -18,7 +18,7 @@ module.exports = grammar({
      */
     node: ($) => choice($.scalar, $.sequence, $.mapping),
 
-    scalar: ($) => choice($.null),
+    scalar: ($) => choice($.null, $.true, $.int, $.float, $.str),
 
     sequence: ($) => repeat1(seq(token("-"), $.scalar)),
 
@@ -30,6 +30,16 @@ module.exports = grammar({
      * Scalars
      */
     null: () => choice(token("null"), token("Null"), token("NULL"), token("~")),
+    true: () => choice(token("true"), token("True"), token("TRUE")),
+    int: ($) => choice($._int_10, $._int_8, $._int_16),
+    _int_10: () => /[-+]?[0-9]+/,
+    _int_8: () => /0o[0-7]+/,
+    _int_16: () => /0x[0-9a-fA-F]+/,
+    float: ($) => choice($._double, $._inf, $._nan),
+    _double: () => /[-+]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)([eE][-+]?[0-9]+)?/,
+    _inf: () => /[-+]?(\.inf|\.Inf|\.INF)/,
+    _nan: () => /(\.nan|\.NaN|\.NAN)/,
+    str: () => /[^\r\n]+/,
 
     /*
      * Indicators

@@ -6,6 +6,29 @@ Scalars
 - Null
 - NULL
 - ~
+- true
+- True
+- TRUE
+- 0
+- 1
+- +1
+- -1
+- 0o7
+- 0x3A
+- 0.
+- -0.0
+- .5
+- +12e03
+- -2E+05
+- .inf
+- .Inf
+- .INF
+- .nan
+- .NaN
+- .NAN
+- hello
+- ""
+- + 1
 
 ---
 
@@ -14,4 +37,27 @@ Scalars
   (scalar (null))
   (scalar (null))
   (scalar (null))
+  (scalar (true))
+  (scalar (true))
+  (scalar (true))
+  (scalar (int))
+  (scalar (int))
+  (scalar (int))
+  (scalar (int))
+  (scalar (int))
+  (scalar (int))
+  (scalar (float))
+  (scalar (float))
+  (scalar (float))
+  (scalar (float))
+  (scalar (float))
+  (scalar (float))
+  (scalar (float))
+  (scalar (float))
+  (scalar (float))
+  (scalar (float))
+  (scalar (float))
+  (scalar (str))
+  (scalar (str))
+  (scalar (str))
 ))

@@ -1,5 +1,15 @@
 [
   {
+    "type": "float",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "int",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "null",
     "named": true,
     "fields": {}
@@ -13,7 +23,23 @@
       "required": true,
       "types": [
         {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "int",
+          "named": true
+        },
+        {
           "type": "null",
+          "named": true
+        },
+        {
+          "type": "str",
+          "named": true
+        },
+        {
+          "type": "true",
           "named": true
         }
       ]
@@ -51,6 +77,11 @@
     }
   },
   {
+    "type": "true",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "-",
     "named": false
   },
@@ -63,7 +94,23 @@
     "named": false
   },
   {
+    "type": "TRUE",
+    "named": false
+  },
+  {
+    "type": "True",
+    "named": false
+  },
+  {
     "type": "null",
+    "named": false
+  },
+  {
+    "type": "str",
+    "named": true
+  },
+  {
+    "type": "true",
     "named": false
   },
   {
