@@ -10,21 +10,41 @@
 module.exports = grammar({
   name: "yaml",
 
+  externals: ($) => [$._indent, $._dedent],
+  extras: () => [/[ \t]+/],
+
   rules: {
-    source_file: ($) => $.sequence,
+    source_file: ($) => $.node,
+    // source_file: ($) => seq(repeat($._line_break), $.node),
 
     /*
      * Nodes
      */
-    node: ($) => choice($.scalar, $.sequence, $.mapping),
+    node: ($) => choice($.sequence, $.mapping),
 
     scalar: ($) => choice($.null, $.bool, $.int, $.float, $.str),
 
-    sequence: ($) => repeat1(seq(token("-"), $.scalar)),
+    //sequence: ($) => repeat1(seq(token("-"), $.scalar)),
+    sequence: ($) =>
+      seq(
+        $._scalar_item,
+        repeat(seq($._line_break, $._scalar_item)),
+        optional($._line_break),
+      ),
 
-    mapping: ($) => repeat(seq($.mapping_key, token(":"), $.mapping_value)),
-    mapping_key: ($) => $.node,
-    mapping_value: ($) => $.node,
+    _scalar_item: ($) => seq(token(prec(1, /-[ \t]+/)), $.scalar),
+
+    _line_break: () => /\r\n|\n|\r/,
+
+    mapping: ($) => repeat1($.mapping_entry),
+    mapping_entry: ($) => seq($.mapping_key, ":", $.mapping_value),
+
+    mapping_value: ($) =>
+      choice(
+        seq($.scalar, $._line_break),
+        seq($._line_break, $._indent, $.node, $._dedent),
+      ),
+    mapping_key: ($) => $.scalar,
 
     /*
      * Scalars
@@ -41,7 +61,8 @@ module.exports = grammar({
     _double: () => /[-+]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)([eE][-+]?[0-9]+)?/,
     _inf: () => /[-+]?(\.inf|\.Inf|\.INF)/,
     _nan: () => /(\.nan|\.NaN|\.NAN)/,
-    str: () => /[^\r\n]+/,
+    //str: () => /[^\r\n]+/,
+    str: () => /[^ \t\r\n:](?:[^\r\n:]*[^ \t\r\n:])?/,
 
     /*
      * Indicators

@@ -1,7 +1,6 @@
 =======
 Scalars - bool
 =======
-
 - true
 - True
 - TRUE
@@ -11,11 +10,11 @@ Scalars - bool
 
 ---
 
-(source_file (sequence
+(source_file (node (sequence
   (scalar (bool (true)))
   (scalar (bool (true)))
   (scalar (bool (true)))
   (scalar (bool (false)))
   (scalar (bool (false)))
   (scalar (bool (false)))
-))
+)))

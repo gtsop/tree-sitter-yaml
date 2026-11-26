@@ -1,7 +1,6 @@
 =======
 Scalars - int
 =======
-
 - 0
 - 1
 - +1
@@ -11,11 +10,11 @@ Scalars - int
 
 ---
 
-(source_file (sequence
+(source_file (node (sequence
   (scalar (int))
   (scalar (int))
   (scalar (int))
   (scalar (int))
   (scalar (int))
   (scalar (int))
-))
+)))

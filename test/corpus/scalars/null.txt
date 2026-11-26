@@ -1,7 +1,6 @@
 =======
 Scalars - null
 =======
-
 - null
 - Null
 - NULL
@@ -9,9 +8,9 @@ Scalars - null
 
 ---
 
-(source_file (sequence
+(source_file (node (sequence
   (scalar (null))
   (scalar (null))
   (scalar (null))
   (scalar (null))
-))
+)))

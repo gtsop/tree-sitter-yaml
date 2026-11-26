@@ -1,11 +1,15 @@
 =======
 Default
 =======
-
-- null
+key: value
 
 ---
 
-(source_file (sequence
-  (scalar (null))
+(source_file (node
+  (mapping
+    (mapping_entry
+      (mapping_key (scalar (str)))
+      (mapping_value (scalar (str)))
+    )
+  )
 ))

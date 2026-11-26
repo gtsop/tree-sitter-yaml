@@ -1,7 +1,6 @@
 =======
 Scalars - float
 =======
-
 - 0.
 - -0.0
 - .5
@@ -16,7 +15,7 @@ Scalars - float
 
 ---
 
-(source_file (sequence
+(source_file (node (sequence
   (scalar (float))
   (scalar (float))
   (scalar (float))
@@ -28,4 +27,4 @@ Scalars - float
   (scalar (float))
   (scalar (float))
   (scalar (float))
-))
+)))

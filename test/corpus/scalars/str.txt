@@ -1,15 +1,14 @@
 =======
 Scalars - str
 =======
-
 - hello
 - ""
 - + 1
 
 ---
 
-(source_file (sequence
+(source_file (node (sequence
   (scalar (str))
   (scalar (str))
   (scalar (str))
-))
+)))

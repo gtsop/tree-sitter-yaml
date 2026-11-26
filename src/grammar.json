@@ -4,15 +4,11 @@
   "rules": {
     "source_file": {
       "type": "SYMBOL",
-      "name": "sequence"
+      "name": "node"
     },
     "node": {
       "type": "CHOICE",
       "members": [
-        {
-          "type": "SYMBOL",
-          "name": "scalar"
-        },
         {
           "type": "SYMBOL",
           "name": "sequence"
@@ -49,54 +45,132 @@
       ]
     },
     "sequence": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "-"
-            }
-          },
-          {
-            "type": "SYMBOL",
-            "name": "scalar"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_scalar_item"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_line_break"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_scalar_item"
+              }
+            ]
           }
-        ]
-      }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_line_break"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_scalar_item": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PREC",
+            "value": 1,
+            "content": {
+              "type": "PATTERN",
+              "value": "-[ \\t]+"
+            }
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "scalar"
+        }
+      ]
+    },
+    "_line_break": {
+      "type": "PATTERN",
+      "value": "\\r\\n|\\n|\\r"
     },
     "mapping": {
-      "type": "REPEAT",
+      "type": "REPEAT1",
       "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "mapping_key"
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": ":"
-            }
-          },
-          {
-            "type": "SYMBOL",
-            "name": "mapping_value"
-          }
-        ]
+        "type": "SYMBOL",
+        "name": "mapping_entry"
       }
+    },
+    "mapping_entry": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "mapping_key"
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "mapping_value"
+        }
+      ]
+    },
+    "mapping_value": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "scalar"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_line_break"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_line_break"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_indent"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "node"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_dedent"
+            }
+          ]
+        }
+      ]
     },
     "mapping_key": {
       "type": "SYMBOL",
-      "name": "node"
-    },
-    "mapping_value": {
-      "type": "SYMBOL",
-      "name": "node"
+      "name": "scalar"
     },
     "null": {
       "type": "CHOICE",
@@ -256,7 +330,7 @@
     },
     "str": {
       "type": "PATTERN",
-      "value": "[^\\r\\n]+"
+      "value": "[^ \\t\\r\\n:](?:[^\\r\\n:]*[^ \\t\\r\\n:])?"
     },
     "c_sequence_entry": {
       "type": "TOKEN",
@@ -1071,12 +1145,21 @@
   "extras": [
     {
       "type": "PATTERN",
-      "value": "\\s"
+      "value": "[ \\t]+"
     }
   ],
   "conflicts": [],
   "precedences": [],
-  "externals": [],
+  "externals": [
+    {
+      "type": "SYMBOL",
+      "name": "_indent"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_dedent"
+    }
+  ],
   "inline": [],
   "supertypes": [],
   "reserved": {}

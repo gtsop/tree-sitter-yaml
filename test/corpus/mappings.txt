@@ -1,0 +1,41 @@
+========
+Mappings
+========
+a: a
+b:
+  - 1
+  - 2
+c:
+  e: e
+  f: f
+
+---
+
+(source_file (node
+  (mapping
+    (mapping_entry
+      (mapping_key (scalar (str)))
+      (mapping_value (scalar (str)))
+    )
+    (mapping_entry
+      (mapping_key (scalar (str)))
+      (mapping_value (node (sequence
+        (scalar (int))
+        (scalar (int))
+      )))
+    )
+    (mapping_entry
+      (mapping_key (scalar (str)))
+      (mapping_value (node (mapping
+        (mapping_entry
+          (mapping_key (scalar (str)))
+          (mapping_value (scalar (str)))
+        )
+        (mapping_entry
+          (mapping_key (scalar (str)))
+          (mapping_value (scalar (str)))
+        )
+      )))
+    )
+  )
+))
