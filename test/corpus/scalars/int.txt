@@ -1,0 +1,21 @@
+=======
+Scalars - int
+=======
+
+- 0
+- 1
+- +1
+- -1
+- 0o7
+- 0x3A
+
+---
+
+(source_file (sequence
+  (scalar (int))
+  (scalar (int))
+  (scalar (int))
+  (scalar (int))
+  (scalar (int))
+  (scalar (int))
+))

@@ -1,0 +1,21 @@
+=======
+Scalars - bool
+=======
+
+- true
+- True
+- TRUE
+- false
+- False
+- FALSE
+
+---
+
+(source_file (sequence
+  (scalar (bool (true)))
+  (scalar (bool (true)))
+  (scalar (bool (true)))
+  (scalar (bool (false)))
+  (scalar (bool (false)))
+  (scalar (bool (false)))
+))

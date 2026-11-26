@@ -32,7 +32,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "true"
+          "name": "bool"
         },
         {
           "type": "SYMBOL",
@@ -131,6 +131,19 @@
         }
       ]
     },
+    "bool": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "true"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "false"
+        }
+      ]
+    },
     "true": {
       "type": "CHOICE",
       "members": [
@@ -153,6 +166,32 @@
           "content": {
             "type": "STRING",
             "value": "TRUE"
+          }
+        }
+      ]
+    },
+    "false": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "false"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "False"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "FALSE"
           }
         }
       ]

@@ -1,5 +1,29 @@
 [
   {
+    "type": "bool",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "false",
+          "named": true
+        },
+        {
+          "type": "true",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "false",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "float",
     "named": true,
     "fields": {}
@@ -23,6 +47,10 @@
       "required": true,
       "types": [
         {
+          "type": "bool",
+          "named": true
+        },
+        {
           "type": "float",
           "named": true
         },
@@ -36,10 +64,6 @@
         },
         {
           "type": "str",
-          "named": true
-        },
-        {
-          "type": "true",
           "named": true
         }
       ]
@@ -86,6 +110,14 @@
     "named": false
   },
   {
+    "type": "FALSE",
+    "named": false
+  },
+  {
+    "type": "False",
+    "named": false
+  },
+  {
     "type": "NULL",
     "named": false
   },
@@ -99,6 +131,10 @@
   },
   {
     "type": "True",
+    "named": false
+  },
+  {
+    "type": "false",
     "named": false
   },
   {

@@ -1,0 +1,15 @@
+=======
+Scalars - str
+=======
+
+- hello
+- ""
+- + 1
+
+---
+
+(source_file (sequence
+  (scalar (str))
+  (scalar (str))
+  (scalar (str))
+))

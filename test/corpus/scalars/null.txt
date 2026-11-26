@@ -1,0 +1,17 @@
+=======
+Scalars - null
+=======
+
+- null
+- Null
+- NULL
+- ~
+
+---
+
+(source_file (sequence
+  (scalar (null))
+  (scalar (null))
+  (scalar (null))
+  (scalar (null))
+))

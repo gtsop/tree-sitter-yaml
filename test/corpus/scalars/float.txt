@@ -1,0 +1,31 @@
+=======
+Scalars - float
+=======
+
+- 0.
+- -0.0
+- .5
+- +12e03
+- -2E+05
+- .inf
+- .Inf
+- .INF
+- .nan
+- .NaN
+- .NAN
+
+---
+
+(source_file (sequence
+  (scalar (float))
+  (scalar (float))
+  (scalar (float))
+  (scalar (float))
+  (scalar (float))
+  (scalar (float))
+  (scalar (float))
+  (scalar (float))
+  (scalar (float))
+  (scalar (float))
+  (scalar (float))
+))
