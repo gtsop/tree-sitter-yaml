@@ -3,8 +3,8 @@
   "name": "yaml",
   "rules": {
     "source_file": {
-      "type": "STRING",
-      "value": "test"
+      "type": "SYMBOL",
+      "name": "sequence"
     },
     "node": {
       "type": "CHOICE",
@@ -24,14 +24,31 @@
       ]
     },
     "scalar": {
-      "type": "STRING",
-      "value": "scalar"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "null"
+        }
+      ]
     },
     "sequence": {
-      "type": "REPEAT",
+      "type": "REPEAT1",
       "content": {
-        "type": "SYMBOL",
-        "name": "node"
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "TOKEN",
+            "content": {
+              "type": "STRING",
+              "value": "-"
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "scalar"
+          }
+        ]
       }
     },
     "mapping": {
@@ -47,7 +64,7 @@
             "type": "TOKEN",
             "content": {
               "type": "STRING",
-              "value": ": "
+              "value": ":"
             }
           },
           {
@@ -64,6 +81,39 @@
     "mapping_value": {
       "type": "SYMBOL",
       "name": "node"
+    },
+    "null": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "null"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "Null"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "NULL"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "~"
+          }
+        }
+      ]
     },
     "c_sequence_entry": {
       "type": "TOKEN",

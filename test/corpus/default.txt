@@ -2,8 +2,10 @@
 Default
 =======
 
-test
+- null
 
 ---
 
-(source_file)
+(source_file (sequence
+  (scalar (null))
+))

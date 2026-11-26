@@ -11,21 +11,25 @@ module.exports = grammar({
   name: "yaml",
 
   rules: {
-    // TODO: add the actual grammar rules
-    source_file: () => "test",
+    source_file: ($) => $.sequence,
 
     /*
      * Nodes
      */
     node: ($) => choice($.scalar, $.sequence, $.mapping),
 
-    scalar: ($) => "scalar",
+    scalar: ($) => choice($.null),
 
-    sequence: ($) => repeat($.node),
+    sequence: ($) => repeat1(seq(token("-"), $.scalar)),
 
-    mapping: ($) => repeat(seq($.mapping_key, token(": "), $.mapping_value)),
+    mapping: ($) => repeat(seq($.mapping_key, token(":"), $.mapping_value)),
     mapping_key: ($) => $.node,
     mapping_value: ($) => $.node,
+
+    /*
+     * Scalars
+     */
+    null: () => choice(token("null"), token("Null"), token("NULL"), token("~")),
 
     /*
      * Indicators
